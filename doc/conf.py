@@ -110,6 +110,10 @@ class Mock(object):
 
 sys.modules['ceph_module'] = Mock()
 
+if not tags.has('with_api'):
+    exclude_patterns += ['api/*',
+                         '*/api.rst']
+
 for pybind in [os.path.join(top_level, 'src/pybind'),
                os.path.join(top_level, 'src/pybind/mgr'),
                os.path.join(top_level, 'src/python-common')]:
